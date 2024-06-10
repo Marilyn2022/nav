@@ -1,7 +1,15 @@
 // Copyright @ 2018-present xiejiahe. All rights reserved. MIT license.
 // See https://github.com/xjh22222228/nav
 
-export type ThemeType = 'Light' | 'Sim' | 'Side' | 'App' | 'Shortcut'
+export type ThemeType =
+  | 'Current'
+  | 'Light'
+  | 'Sim'
+  | 'Side'
+  | 'App'
+  | 'Shortcut'
+
+type OverType = 'overflow' | 'ellipsis'
 
 export interface ITagPropValues {
   id: number
@@ -17,8 +25,8 @@ export interface ITagProp {
 }
 
 export interface IWebProps {
-  __name__: string | undefined // 搜索原name值
-  __desc__: string | undefined
+  __name__?: string | undefined // 搜索原name值
+  __desc__?: string | undefined
   id: string | number
   name: string
   desc: string
@@ -34,6 +42,7 @@ export interface IWebProps {
   urls?: {
     [tagName: string]: string
   }
+  [key: string]: any
 }
 
 export interface INavThreeProp {
@@ -85,11 +94,10 @@ export interface ISettings {
   description: string
   keywords: string
   theme: ThemeType
+  openSEO: boolean
   appTheme: ThemeType
   footerContent: string
   headerContent: string
-  baiduStatisticsUrl: string
-  cnzzStatisticsUrl: string
   showGithub: boolean
   showLanguage: boolean
   showCopy: Boolean | undefined
@@ -100,33 +108,34 @@ export interface ISettings {
   errorUrlCount?: number
 
   lightCardStyle: string
-  lightOverType: 'overflow' | 'ellipsis'
+  lightOverType: OverType
+  lightImages: Record<string, any>[]
 
-  simThemeImages: Record<string, string>[]
+  simThemeImages: Record<string, any>[]
   simThemeDesc: string
   simThemeHeight: number
   simThemeAutoplay: boolean
   simCardStyle: string
   simTitle: string
-  simOverType: 'overflow' | 'ellipsis'
+  simOverType: OverType
 
-  sideThemeImages: Record<string, string>[]
+  sideThemeImages: Record<string, any>[]
   sideThemeHeight: number
   sideThemeAutoplay: boolean
   sideCardStyle: string
   sideTitle: string
 
-  shortcutThemeImages: Record<string, string>[]
+  shortcutThemeImages: Record<string, any>[]
   shortcutThemeShowWeather: boolean
+  shortcutTitle: string
 
   superTitle: string
-  superOverType: 'overflow' | 'ellipsis'
+  superOverType: OverType
   superCardStyle: string
-
-  superImages: Record<string, string>[]
+  superImages: Record<string, any>[]
 
   showRate: boolean
-  mirrorList: Record<string, string>[]
+  mirrorList: Record<string, any>[]
 }
 
 export interface IConfig {
